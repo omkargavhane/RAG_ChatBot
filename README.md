@@ -71,3 +71,9 @@ node index.js
 
 ### Start the Server
 npx nodemon server.js
+
+## Screenshots
+<img width="1470" height="956" alt="screenshot _1" src="https://github.com/user-attachments/assets/4880ab0e-a4dc-4b82-bd84-8d086e1550f4" />
+<img width="1470" height="956" alt="screenshot_2 " src="https://github.com/user-attachments/assets/14b2d397-31d0-4518-ac93-590c042be40b" />
+
+
