@@ -1,0 +1,42 @@
+/* Scrollbar styling for chat box */
+#chat-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+#chat-box::-webkit-scrollbar-thumb {
+  background-color: #4B5563; /* Tailwind gray-700 */
+  border-radius: 3px;
+}
+
+#chat-box::-webkit-scrollbar-track {
+  background-color: #E5E7EB; /* Tailwind gray-200 */
+}
+
+/* Optional: smooth scrolling */
+#chat-box {
+  scroll-behavior: smooth;
+}
+
+/* Optional: markdown code block styling */
+#chat-box pre {
+  background-color: #1F2937; /* Tailwind gray-800 */
+  color: #F9FAFB; /* Tailwind gray-50 */
+  padding: 8px 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+}
+
+/* Dark mode override for code blocks */
+.dark #chat-box pre {
+  background-color: #111827; /* Tailwind gray-900 */
+}
+
+/* Optional: user vs bot message tweaks if needed */
+.message.user {
+  @apply bg-blue-600 text-white;
+}
+
+.message.bot {
+  @apply bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-100;
+}
