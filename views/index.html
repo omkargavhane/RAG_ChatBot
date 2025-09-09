@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA RAG Chatbot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Bring Marked back for Markdown rendering used in script.js -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 flex h-screen">
+
+  <!-- Left Panel -->
+  <div class="w-64 bg-gray-800 border-r border-gray-700 flex flex-col p-4">
+    <h2 class="text-xl font-bold mb-6">📚 RAG Chat</h2>
+    <div class="space-y-3 flex-1">
+      <button id="new-chat" class="w-full p-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">
+        New Chat
+      </button>
+      <button id="clear-chat" class="w-full p-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">
+        Clear Chat
+      </button>
+    </div>
+    <div class="text-sm text-gray-400 mt-6">Powered by Gemini + Pinecone</div>
+  </div>
+
+  <!-- Chat Section -->
+  <div class="flex-1 flex flex-col">
+    <!-- Header -->
+    <div class="p-4 border-b border-gray-700 bg-gray-800">
+      <h1 class="text-lg font-semibold">💬 Chat with Document Expert</h1>
+    </div>
+
+    <!-- Chat Box -->
+    <div id="chat-box" class="flex flex-col space-y-3 overflow-y-auto h-full p-4"></div>
+
+    <!-- Input Section -->
+    <div class="p-4 border-t border-gray-700 bg-gray-800">
+      <div class="flex items-center space-x-3">
+        <!-- Input box -->
+        <input id="user-input" type="text" placeholder="Ask me anything..."
+               class="flex-1 p-3 rounded-2xl border border-gray-700 
+                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                      bg-gray-800 text-gray-100 placeholder-gray-400 shadow-inner
+                      transition-all duration-300 ease-in-out
+                      hover:border-blue-400 hover:shadow-lg" />
+
+        <!-- Send button -->
+        <button onclick="sendMessage()"
+                class="p-3 px-6 bg-blue-600 text-white rounded-2xl font-medium 
+                       hover:bg-blue-500 focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 
+                       shadow-lg transition-transform duration-300 ease-in-out 
+                       transform hover:-translate-y-0.5 active:scale-95">
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPORTANT: correct path to your static JS -->
+  <script src="/public/script.js"></script>
+
+  <script>
+    // Optional helpers
+    document.getElementById('clear-chat').addEventListener('click', () => {
+      const chatBox = document.getElementById('chat-box');
+      chatBox.innerHTML = '';
+      localStorage.removeItem('chatHistory');
+    });
+    document.getElementById('new-chat').addEventListener('click', () => {
+      const chatBox = document.getElementById('chat-box');
+      chatBox.innerHTML = '';
+      localStorage.setItem('chatHistory', '[]');
+    });
+  </script>
+</body>
+</html>
